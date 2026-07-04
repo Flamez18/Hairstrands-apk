@@ -92,46 +92,47 @@
 <div class="menu-section-title">Panduan Perawatan</div>
 <div class="horizontal-carousel-container" style="margin-bottom: 20px;">
     <!-- Video Card 1 -->
-    <div class="carousel-item reveal-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
-        <div style="background: linear-gradient(to bottom, rgba(16, 185, 129, 0.4), rgba(4, 120, 87, 0.8)), url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 90px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
-            <i class="fa-regular fa-circle-play" style="font-size: 1.8rem; opacity: 0.9;"></i>
+    <div class="carousel-item video-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
+        <div style="background: linear-gradient(to bottom, rgba(16, 185, 129, 0.4), rgba(4, 120, 87, 0.8)), url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 110px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
+            <i class="fa-regular fa-circle-play" style="font-size: 2rem; opacity: 0.9; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));"></i>
         </div>
         <div style="padding: 10px;">
-            <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.2; height: 2.4em; overflow: hidden;">Prompt Scan Rambut</div>
-            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 4px;">Analisis Rambut Lengkap</div>
+            <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.3;">Prompt Scan Rambut</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 3px;">Analisis Rambut Lengkap</div>
         </div>
     </div>
     <!-- Video Card 2 -->
-    <div class="carousel-item reveal-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
-        <div style="background: linear-gradient(to bottom, rgba(59, 130, 246, 0.4), rgba(29, 78, 216, 0.8)), url('https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 90px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
-            <i class="fa-regular fa-circle-play" style="font-size: 1.8rem; opacity: 0.9;"></i>
+    <div class="carousel-item video-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
+        <div style="background: linear-gradient(to bottom, rgba(59, 130, 246, 0.4), rgba(29, 78, 216, 0.8)), url('https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 110px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
+            <i class="fa-regular fa-circle-play" style="font-size: 2rem; opacity: 0.9; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));"></i>
         </div>
         <div style="padding: 10px;">
-            <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.2; height: 2.4em; overflow: hidden;">Cara Menggunakan Aplikasi</div>
-            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 4px;">Tutorial Lengkap &amp; Mudah</div>
+            <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.3;">Cara Menggunakan Aplikasi</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 3px;">Tutorial Lengkap &amp; Mudah</div>
         </div>
     </div>
     <!-- Video Card 3 -->
-    <div class="carousel-item reveal-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
-        <div style="background: linear-gradient(to bottom, rgba(236, 72, 153, 0.4), rgba(190, 24, 93, 0.8)), url('https://images.unsplash.com/photo-1521590832167-7bfc17484d20?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 90px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
-            <i class="fa-regular fa-circle-play" style="font-size: 1.8rem; opacity: 0.9;"></i>
+    <div class="carousel-item video-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
+        <div style="background: linear-gradient(to bottom, rgba(236, 72, 153, 0.4), rgba(190, 24, 93, 0.8)), url('https://images.unsplash.com/photo-1521590832167-7bfc17484d20?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 110px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
+            <i class="fa-regular fa-circle-play" style="font-size: 2rem; opacity: 0.9; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));"></i>
         </div>
         <div style="padding: 10px;">
-            <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.2; height: 2.4em; overflow: hidden;">Tren Rambut 2026</div>
-            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 4px;">Inspirasi Gaya Terbaru</div>
+            <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.3;">Tren Rambut 2026</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 3px;">Inspirasi Gaya Terbaru</div>
         </div>
     </div>
     <!-- Video Card 4 -->
-    <div class="carousel-item reveal-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
-        <div style="background: linear-gradient(to bottom, rgba(245, 158, 11, 0.4), rgba(180, 83, 9, 0.8)), url('https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 90px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
-            <i class="fa-regular fa-circle-play" style="font-size: 1.8rem; opacity: 0.9;"></i>
+    <div class="carousel-item video-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
+        <div style="background: linear-gradient(to bottom, rgba(245, 158, 11, 0.4), rgba(180, 83, 9, 0.8)), url('https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 110px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
+            <i class="fa-regular fa-circle-play" style="font-size: 2rem; opacity: 0.9; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));"></i>
         </div>
         <div style="padding: 10px;">
-            <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.2; height: 2.4em; overflow: hidden;">Tips Rambut Sehat</div>
-            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 4px;">Perawatan Harian</div>
+            <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.3;">Tips Rambut Sehat</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 3px;">Perawatan Harian</div>
         </div>
     </div>
 </div>
+
 
 <!-- Recommendations section -->
 <div class="menu-section-title" style="display: flex; justify-content: space-between; align-items: center;">
@@ -176,31 +177,63 @@
 @section('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Staggered Scroll Reveal Observer
+
+    // ── Scroll Reveal Observer (only for non-carousel items) ──
     const observer = new IntersectionObserver((entries) => {
         let delayIndex = 0;
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Apply stagger delay dynamically
                 entry.target.style.transitionDelay = `${delayIndex * 80}ms`;
-                
-                // Add revealed class to trigger animation
-                requestAnimationFrame(() => {
-                    entry.target.classList.add('revealed');
-                });
-                
+                requestAnimationFrame(() => { entry.target.classList.add('revealed'); });
                 delayIndex++;
-                
-                // Unobserve after revealing to only trigger once
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
 
-    // Start observing all reveal cards
-    document.querySelectorAll('.reveal-card').forEach(card => {
-        observer.observe(card);
+    document.querySelectorAll('.reveal-card').forEach(card => observer.observe(card));
+
+    // ── Horizontal Carousel: Mouse Wheel + Click-Drag Support ──
+    document.querySelectorAll('.horizontal-carousel-container').forEach(carousel => {
+
+        // 1. Mouse Wheel → Horizontal Scroll
+        carousel.addEventListener('wheel', function(e) {
+            if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                e.preventDefault();
+                carousel.scrollLeft += e.deltaY * 1.5;
+            }
+        }, { passive: false });
+
+        // 2. Click-Drag to Scroll (mouse drag)
+        let isDragging = false;
+        let startX, scrollStart;
+
+        carousel.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            startX = e.pageX - carousel.offsetLeft;
+            scrollStart = carousel.scrollLeft;
+            carousel.style.cursor = 'grabbing';
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            const x = e.pageX - carousel.offsetLeft;
+            const dist = x - startX;
+            carousel.scrollLeft = scrollStart - dist;
+        });
+
+        document.addEventListener('mouseup', function() {
+            if (isDragging) {
+                isDragging = false;
+                carousel.style.cursor = 'grab';
+            }
+        });
+
+        // Set grab cursor
+        carousel.style.cursor = 'grab';
     });
 });
 </script>
 @endsection
+

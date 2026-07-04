@@ -1480,7 +1480,7 @@ body {
 }
 
 .product-card-image {
-    opacity: 0;
+    opacity: 1;
 }
 
 .product-card-image.loaded {
@@ -1622,7 +1622,26 @@ body {
 
 .carousel-item {
     scroll-snap-align: start;
-    flex: 0 0 85%; /* 85% width to allow partial peek of next item */
-    min-width: 280px; /* fallback */
+    flex: 0 0 70%; /* video cards: 70% to show partial next */
+    min-width: 180px;
 }
 
+/* Smaller cards for product recommendation carousel */
+.carousel-item.product-card {
+    flex: 0 0 46%;
+    min-width: 140px;
+}
+
+/* Video cards in carousel - show ~1.6 at a time */
+.carousel-item.video-card {
+    flex: 0 0 58%;
+    min-width: 160px;
+}
+
+/* Break out of parent padding so carousel scrolls edge-to-edge */
+.horizontal-carousel-container {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
