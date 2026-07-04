@@ -86,9 +86,14 @@
             </div>
             @foreach($order->items->take(1) as $item)
             <div class="history-item-details">
-                <div style="width: 48px; height: 48px; border-radius: 8px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; flex-shrink: 0;">
-                    <i class="fa-solid fa-bottle-droplet"></i>
-                </div>
+                @php $prod = $item->product; @endphp
+                @if($prod && $prod->image && file_exists(public_path('uploads/' . $prod->image)))
+                    <img src="{{ asset('uploads/' . $prod->image) }}" alt="{{ $prod->name }}" style="width: 48px; height: 48px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                @else
+                    <div style="width: 48px; height: 48px; border-radius: 8px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; flex-shrink: 0;">
+                        <i class="fa-solid fa-bottle-droplet"></i>
+                    </div>
+                @endif
                 <div>
                     <div class="history-item-title">{{ $item->product->name }}</div>
                     <div style="font-size: 0.8rem; font-weight: 700; color: var(--primary); margin-top: 4px;">Rp {{ number_format($order->total_price, 0, ',', '.') }}</div>
@@ -122,9 +127,14 @@
                 </span>
             </div>
             <div class="history-item-details">
-                <div style="width: 48px; height: 48px; border-radius: 8px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; flex-shrink: 0;">
-                    <i class="fa-solid fa-user-doctor"></i>
-                </div>
+                @php $exp = $booking->expert; @endphp
+                @if($exp && $exp->photo && file_exists(public_path('uploads/' . $exp->photo)))
+                    <img src="{{ asset('uploads/' . $exp->photo) }}" alt="{{ $exp->name }}" style="width: 48px; height: 48px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                @else
+                    <div style="width: 48px; height: 48px; border-radius: 8px; background: var(--primary-light); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem; flex-shrink: 0;">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+                @endif
                 <div>
                     <div class="history-item-title">{{ $booking->expert->name }}</div>
                     <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">{{ $booking->expert->specialty }}</div>

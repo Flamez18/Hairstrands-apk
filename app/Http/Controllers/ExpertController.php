@@ -48,6 +48,22 @@ class ExpertController extends Controller
                                 ->where('date', $selectedDate)
                                 ->get();
 
+        if ($slots->isEmpty()) {
+            $timeSlots = ['09:00', '10:00', '11:00', '13:00', '14:00', '16:00'];
+            foreach ($timeSlots as $slot) {
+                ExpertSchedule::create([
+                    'hair_expert_id' => $expert->id,
+                    'date' => $selectedDate,
+                    'time_slot' => $slot,
+                    'is_booked' => false,
+                ]);
+            }
+            // Fetch again
+            $slots = ExpertSchedule::where('hair_expert_id', $expert->id)
+                                    ->where('date', $selectedDate)
+                                    ->get();
+        }
+
         return view('experts.detail', compact('expert', 'dates', 'selectedDate', 'slots'));
     }
 

@@ -11,17 +11,17 @@
 @section('content')
 {{-- Expert Info Card --}}
 <div style="display: flex; align-items: center; gap: 14px; background: white; border: 1px solid var(--border); border-radius: 16px; padding: 16px; margin-bottom: 24px;">
-    <div style="width: 56px; height: 56px; border-radius: 12px; background: linear-gradient(135deg, var(--primary-light), #c6eed9); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; color: var(--primary); flex-shrink: 0;">
-        {{ substr($expert->name, 4, 1) }}
-    </div>
+    @if($expert->photo && file_exists(public_path('uploads/' . $expert->photo)))
+        <img src="{{ asset('uploads/' . $expert->photo) }}" style="width: 56px; height: 56px; border-radius: 12px; object-fit: cover; flex-shrink: 0;" alt="{{ $expert->name }}">
+    @else
+        <div style="width: 56px; height: 56px; border-radius: 12px; background: linear-gradient(135deg, var(--primary-light), #c6eed9); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; color: var(--primary); flex-shrink: 0;">
+            {{ substr($expert->name, 4, 1) }}
+        </div>
+    @endif
     <div style="flex: 1;">
         <div style="font-size: 0.95rem; font-weight: 700;">{{ $expert->name }}</div>
         <div style="font-size: 0.75rem; color: var(--text-muted);">{{ $expert->profile }}</div>
         <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;"><i class="fa-regular fa-clock"></i> {{ $expert->experience }}</div>
-    </div>
-    <div>
-        <div style="font-size: 0.8rem; font-weight: 800; color: var(--primary);">Rp {{ number_format($expert->price, 0, ',', '.') }}</div>
-        <div style="font-size: 0.65rem; color: var(--text-muted); text-align: right;">/sesi</div>
     </div>
 </div>
 
