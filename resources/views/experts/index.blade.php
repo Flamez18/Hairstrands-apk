@@ -32,9 +32,13 @@
     @foreach($experts as $index => $expert)
     <div class="expert-card">
         <div class="expert-photo-wrapper">
-            <div style="width: 76px; height: 76px; border-radius: 14px; background: linear-gradient(135deg, var(--primary-light), #c6eed9); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; color: var(--primary);">
-                {{ substr($expert->name, 4, 1) }}
-            </div>
+            @if($expert->photo && file_exists(public_path('uploads/' . $expert->photo)))
+                <img src="{{ asset('uploads/' . $expert->photo) }}" class="expert-photo" alt="{{ $expert->name }}">
+            @else
+                <div style="width: 76px; height: 76px; border-radius: 14px; background: linear-gradient(135deg, var(--primary-light), #c6eed9); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; color: var(--primary);">
+                    {{ substr($expert->name, 4, 1) }}
+                </div>
+            @endif
             @if($index % 2 === 0)
                 <span class="status-badge-online">Online</span>
             @endif
@@ -47,8 +51,7 @@
                 <span><i class="fa-solid fa-star"></i> {{ $expert->rating }}</span>
                 <span><i class="fa-regular fa-clock"></i> {{ $expert->experience }}</span>
             </div>
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-                <span class="expert-price">Rp {{ number_format($expert->price, 0, ',', '.') }}/sesi</span>
+            <div style="display: flex; align-items: center; justify-content: flex-end;">
                 <a href="{{ route('experts.detail', $expert->id) }}" class="btn btn-primary" style="width: auto; padding: 8px 16px; font-size: 0.8rem; display: inline-block;">
                     Booking
                 </a>

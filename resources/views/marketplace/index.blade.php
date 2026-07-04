@@ -63,9 +63,21 @@
                 @endif
 
                 <div class="product-card-image-wrapper">
-                    <div class="product-placeholder-image">
-                        <i class="fa-solid fa-bottle-droplet" style="font-size: 2.5rem; opacity: 0.9;"></i>
-                    </div>
+                    @if($product->image)
+                        @if(str_starts_with($product->image, 'http'))
+                            <img src="{{ $product->image }}" class="product-card-image" alt="{{ $product->name }}">
+                        @elseif(file_exists(public_path('uploads/' . $product->image)))
+                            <img src="{{ asset('uploads/' . $product->image) }}" class="product-card-image" alt="{{ $product->name }}">
+                        @else
+                            <div class="product-placeholder-image">
+                                <i class="fa-solid fa-bottle-droplet" style="font-size: 2.5rem; opacity: 0.9;"></i>
+                            </div>
+                        @endif
+                    @else
+                        <div class="product-placeholder-image">
+                            <i class="fa-solid fa-bottle-droplet" style="font-size: 2.5rem; opacity: 0.9;"></i>
+                        </div>
+                    @endif
                 </div>
                 <div class="product-card-info">
                     <div class="product-card-name">{{ $product->name }}</div>

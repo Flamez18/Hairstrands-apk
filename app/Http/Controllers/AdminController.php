@@ -114,9 +114,22 @@ class AdminController extends Controller
             'price' => 'required|integer|min:0',
             'stock' => 'required|integer|min:0',
             'image' => 'nullable|string',
+            'image_file' => 'nullable|image|max:10240',
             'rating' => 'nullable|numeric|between:1,5',
             'shades' => 'nullable|string', // Comma separated list of hex colors
         ]);
+
+        $imageName = 'product_default.png';
+        if ($request->hasFile('image_file')) {
+            $file = $request->file('image_file');
+            $imageName = time() . '_' . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
+            if (!file_exists(public_path('uploads'))) {
+                mkdir(public_path('uploads'), 0777, true);
+            }
+            $file->move(public_path('uploads'), $imageName);
+        } elseif ($request->filled('image')) {
+            $imageName = $request->image;
+        }
 
         $shadesArray = null;
         if (!empty($request->shades)) {
@@ -130,7 +143,7 @@ class AdminController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'stock' => $request->stock,
-            'image' => $request->image ?? 'product_default.png',
+            'image' => $imageName,
             'rating' => $request->rating ?? 5.0,
             'shades' => $shadesArray,
         ]);
@@ -158,9 +171,22 @@ class AdminController extends Controller
             'price' => 'required|integer|min:0',
             'stock' => 'required|integer|min:0',
             'image' => 'nullable|string',
+            'image_file' => 'nullable|image|max:10240',
             'rating' => 'nullable|numeric|between:1,5',
             'shades' => 'nullable|string',
         ]);
+
+        $imageName = $product->image;
+        if ($request->hasFile('image_file')) {
+            $file = $request->file('image_file');
+            $imageName = time() . '_' . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
+            if (!file_exists(public_path('uploads'))) {
+                mkdir(public_path('uploads'), 0777, true);
+            }
+            $file->move(public_path('uploads'), $imageName);
+        } elseif ($request->filled('image')) {
+            $imageName = $request->image;
+        }
 
         $shadesArray = null;
         if (!empty($request->shades)) {
@@ -174,7 +200,7 @@ class AdminController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'stock' => $request->stock,
-            'image' => $request->image ?? $product->image,
+            'image' => $imageName,
             'rating' => $request->rating ?? $product->rating,
             'shades' => $shadesArray,
         ]);
@@ -211,7 +237,20 @@ class AdminController extends Controller
             'profile' => 'nullable|string',
             'description' => 'nullable|string',
             'photo' => 'nullable|string',
+            'photo_file' => 'nullable|image|max:10240',
         ]);
+
+        $photoName = 'expert_default.png';
+        if ($request->hasFile('photo_file')) {
+            $file = $request->file('photo_file');
+            $photoName = time() . '_' . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
+            if (!file_exists(public_path('uploads'))) {
+                mkdir(public_path('uploads'), 0777, true);
+            }
+            $file->move(public_path('uploads'), $photoName);
+        } elseif ($request->filled('photo')) {
+            $photoName = $request->photo;
+        }
 
         HairExpert::create([
             'name' => $request->name,
@@ -221,7 +260,7 @@ class AdminController extends Controller
             'experience' => $request->experience,
             'profile' => $request->profile,
             'description' => $request->description,
-            'photo' => $request->photo ?? 'expert_default.png',
+            'photo' => $photoName,
         ]);
 
         return redirect()->route('admin.experts.index')->with('success', 'Dokter Ahli berhasil dibuat!');
@@ -246,7 +285,20 @@ class AdminController extends Controller
             'profile' => 'nullable|string',
             'description' => 'nullable|string',
             'photo' => 'nullable|string',
+            'photo_file' => 'nullable|image|max:10240',
         ]);
+
+        $photoName = $expert->photo;
+        if ($request->hasFile('photo_file')) {
+            $file = $request->file('photo_file');
+            $photoName = time() . '_' . Str::slug($request->name) . '.' . $file->getClientOriginalExtension();
+            if (!file_exists(public_path('uploads'))) {
+                mkdir(public_path('uploads'), 0777, true);
+            }
+            $file->move(public_path('uploads'), $photoName);
+        } elseif ($request->filled('photo')) {
+            $photoName = $request->photo;
+        }
 
         $expert->update([
             'name' => $request->name,
@@ -256,7 +308,7 @@ class AdminController extends Controller
             'experience' => $request->experience,
             'profile' => $request->profile,
             'description' => $request->description,
-            'photo' => $request->photo ?? $expert->photo,
+            'photo' => $photoName,
         ]);
 
         return redirect()->route('admin.experts.index')->with('success', 'Dokter Ahli berhasil diperbarui!');

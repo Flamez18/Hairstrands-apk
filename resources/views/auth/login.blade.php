@@ -45,13 +45,5 @@
     <div class="auth-footer">
         Belum punya akun? <a href="{{ route('register') }}">Daftar Sekarang</a>
     </div>
-    
-    <div style="margin-top: 30px; text-align: center; border-top: 1px solid var(--border); padding-top: 20px;">
-        <span style="font-size: 0.8rem; color: var(--text-muted);">Demo Akses:</span>
-        <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 6px;">
-            <div>Customer: <strong>joko@gmail.com</strong> / <strong>password</strong></div>
-            <div style="margin-top: 4px;">Admin: <strong>admin@purestrands.com</strong> / <strong>password</strong></div>
-        </div>
-    </div>
 </div>
 @endsection

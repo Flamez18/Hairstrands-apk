@@ -20,9 +20,21 @@
 @section('content')
 <!-- Product Image Container -->
 <div class="detail-image-container" style="margin: -20px -20px 20px -20px;">
-    <div class="product-placeholder-image" style="height: 250px; border-radius: 0;">
-        <i class="fa-solid fa-bottle-droplet" style="font-size: 5rem; opacity: 0.9;"></i>
-    </div>
+    @if($product->image)
+        @if(str_starts_with($product->image, 'http'))
+            <img src="{{ $product->image }}" class="detail-image" style="height: 250px; border-radius: 0; width: 100%; object-fit: cover;" alt="{{ $product->name }}">
+        @elseif(file_exists(public_path('uploads/' . $product->image)))
+            <img src="{{ asset('uploads/' . $product->image) }}" class="detail-image" style="height: 250px; border-radius: 0; width: 100%; object-fit: cover;" alt="{{ $product->name }}">
+        @else
+            <div class="product-placeholder-image" style="height: 250px; border-radius: 0;">
+                <i class="fa-solid fa-bottle-droplet" style="font-size: 5rem; opacity: 0.9;"></i>
+            </div>
+        @endif
+    @else
+        <div class="product-placeholder-image" style="height: 250px; border-radius: 0;">
+            <i class="fa-solid fa-bottle-droplet" style="font-size: 5rem; opacity: 0.9;"></i>
+        </div>
+    @endif
 </div>
 
 <div class="detail-info-card">

@@ -7,7 +7,7 @@
 </div>
 
 <div style="max-width: 700px;">
-    <form action="{{ route('admin.products.store') }}" method="POST">
+    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if($errors->any())
         <div class="alert alert-danger" style="margin-bottom: 20px;">
@@ -41,8 +41,9 @@
                 <input type="number" name="rating" class="form-input" value="{{ old('rating', 5.0) }}" step="0.1" min="1" max="5">
             </div>
             <div class="form-group">
-                <label class="form-label">Nama File Gambar</label>
-                <input type="text" name="image" class="form-input" value="{{ old('image') }}" placeholder="product_name.png">
+                <label class="form-label">Gambar Produk</label>
+                <input type="file" name="image_file" class="form-input" style="margin-bottom: 4px;">
+                <input type="text" name="image" class="form-input" value="{{ old('image') }}" placeholder="Atau masukkan nama file manual (opsional)">
             </div>
         </div>
         <div class="form-group">
