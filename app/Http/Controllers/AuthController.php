@@ -28,8 +28,9 @@ class AuthController extends Controller
             if ($user->role === 'admin') {
                 return redirect()->route('admin.dashboard')->with('success', 'Selamat datang Admin!');
             }
-            
-            return redirect()->route('home')->with('success', 'Selamat datang kembali!');
+
+            // Show splash animation before entering app
+            return redirect()->route('splash')->with('splash_message', 'Selamat datang kembali, ' . $user->name . '!');
         }
 
         return back()->withErrors([
@@ -63,7 +64,8 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home')->with('success', 'Pendaftaran berhasil!');
+        // Show splash animation after successful registration
+        return redirect()->route('splash')->with('splash_message', 'Selamat datang di PureStrand AI, ' . $user->name . '!');
     }
 
     public function logout(Request $request)

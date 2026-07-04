@@ -24,6 +24,10 @@ Route::middleware('auth')->group(function () {
 
     // Customer Routes (Protected with role:user)
     Route::middleware('role:user')->group(function () {
+        Route::get('/splash', function () {
+            return view('splash');
+        })->name('splash');
+
         Route::get('/', [HomeController::class, 'index'])->name('home');
 
         // Marketplace
