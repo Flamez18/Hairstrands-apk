@@ -90,11 +90,11 @@
 
 <!-- Video Section -->
 <div class="menu-section-title">Panduan Perawatan</div>
-<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;">
+<div class="horizontal-carousel-container" style="margin-bottom: 20px;">
     <!-- Video Card 1 -->
-    <div style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
-        <div style="background: linear-gradient(135deg, #10b981, #047857); height: 90px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
-            <i class="fa-regular fa-circle-play" style="font-size: 1.8rem; opacity: 0.85;"></i>
+    <div class="carousel-item reveal-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
+        <div style="background: linear-gradient(to bottom, rgba(16, 185, 129, 0.4), rgba(4, 120, 87, 0.8)), url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 90px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
+            <i class="fa-regular fa-circle-play" style="font-size: 1.8rem; opacity: 0.9;"></i>
         </div>
         <div style="padding: 10px;">
             <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.2; height: 2.4em; overflow: hidden;">Prompt Scan Rambut</div>
@@ -102,13 +102,33 @@
         </div>
     </div>
     <!-- Video Card 2 -->
-    <div style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
-        <div style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); height: 90px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
-            <i class="fa-regular fa-circle-play" style="font-size: 1.8rem; opacity: 0.85;"></i>
+    <div class="carousel-item reveal-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
+        <div style="background: linear-gradient(to bottom, rgba(59, 130, 246, 0.4), rgba(29, 78, 216, 0.8)), url('https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 90px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
+            <i class="fa-regular fa-circle-play" style="font-size: 1.8rem; opacity: 0.9;"></i>
         </div>
         <div style="padding: 10px;">
             <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.2; height: 2.4em; overflow: hidden;">Cara Menggunakan Aplikasi</div>
             <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 4px;">Tutorial Lengkap &amp; Mudah</div>
+        </div>
+    </div>
+    <!-- Video Card 3 -->
+    <div class="carousel-item reveal-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
+        <div style="background: linear-gradient(to bottom, rgba(236, 72, 153, 0.4), rgba(190, 24, 93, 0.8)), url('https://images.unsplash.com/photo-1521590832167-7bfc17484d20?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 90px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
+            <i class="fa-regular fa-circle-play" style="font-size: 1.8rem; opacity: 0.9;"></i>
+        </div>
+        <div style="padding: 10px;">
+            <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.2; height: 2.4em; overflow: hidden;">Tren Rambut 2026</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 4px;">Inspirasi Gaya Terbaru</div>
+        </div>
+    </div>
+    <!-- Video Card 4 -->
+    <div class="carousel-item reveal-card" style="background-color: white; border-radius: 12px; border: 1px solid var(--border); overflow: hidden;">
+        <div style="background: linear-gradient(to bottom, rgba(245, 158, 11, 0.4), rgba(180, 83, 9, 0.8)), url('https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center; height: 90px; position: relative; display: flex; align-items: center; justify-content: center; color: white;">
+            <i class="fa-regular fa-circle-play" style="font-size: 1.8rem; opacity: 0.9;"></i>
+        </div>
+        <div style="padding: 10px;">
+            <div style="font-size: 0.75rem; font-weight: 700; line-height: 1.2; height: 2.4em; overflow: hidden;">Tips Rambut Sehat</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 4px;">Perawatan Harian</div>
         </div>
     </div>
 </div>
@@ -118,9 +138,9 @@
     <span>Rekomendasi Untukmu</span>
     <a href="{{ route('marketplace') }}" style="font-size: 0.75rem; color: var(--primary); font-weight: 600; text-decoration: none;">Lihat Semua</a>
 </div>
-<div class="product-grid" style="margin-bottom: 20px;">
+<div class="horizontal-carousel-container" style="margin-bottom: 20px;">
     @foreach($recommendations as $product)
-        <a href="{{ route('marketplace.detail', $product->slug) }}" class="product-card">
+        <a href="{{ route('marketplace.detail', $product->slug) }}" class="product-card carousel-item reveal-card">
             <div class="product-card-image-wrapper">
                 @if($product->image)
                     @if(str_starts_with($product->image, 'http'))
@@ -151,4 +171,36 @@
         </a>
     @endforeach
 </div>
+@endsection
+
+@section('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Staggered Scroll Reveal Observer
+    const observer = new IntersectionObserver((entries) => {
+        let delayIndex = 0;
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Apply stagger delay dynamically
+                entry.target.style.transitionDelay = `${delayIndex * 80}ms`;
+                
+                // Add revealed class to trigger animation
+                requestAnimationFrame(() => {
+                    entry.target.classList.add('revealed');
+                });
+                
+                delayIndex++;
+                
+                // Unobserve after revealing to only trigger once
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+
+    // Start observing all reveal cards
+    document.querySelectorAll('.reveal-card').forEach(card => {
+        observer.observe(card);
+    });
+});
+</script>
 @endsection

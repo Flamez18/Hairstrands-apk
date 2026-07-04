@@ -22,7 +22,23 @@
         </header>
 
         <!-- Main Content -->
-        <main class="app-content">
+        <main class="app-content" style="position: relative;">
+            <!-- Parallax Background Layer -->
+            <div class="parallax-bg-container">
+                <div class="parallax-element parallax-blob-1" data-parallax-speed="0.1" style="will-change: transform;"></div>
+                <div class="parallax-element parallax-strand" data-parallax-speed="-0.07" style="will-change: transform;">
+                    <svg viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                        <path d="M10,10 Q60,100 10,190" stroke="rgba(16, 185, 129, 0.12)" stroke-width="5" fill="none" />
+                    </svg>
+                </div>
+                <div class="parallax-element parallax-blob-2" data-parallax-speed="0.14" style="will-change: transform;"></div>
+                <div class="parallax-element parallax-strand-2" data-parallax-speed="-0.12" style="will-change: transform;">
+                    <svg viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                        <path d="M90,10 Q40,100 90,190" stroke="rgba(59, 130, 246, 0.1)" stroke-width="4" fill="none" />
+                    </svg>
+                </div>
+            </div>
+
             @if(session('success'))
                 <div class="alert alert-success">
                     <i class="fa-solid fa-circle-check"></i> {{ session('success') }}
@@ -69,5 +85,42 @@
     </div>
     
     @yield('scripts')
+    
+    <!-- Parallax Scroll Effect JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const parallaxElements = document.querySelectorAll('.parallax-element');
+            const scrollContainer = document.querySelector('.app-content');
+            
+            if (!scrollContainer || parallaxElements.length === 0) return;
+
+            let ticking = false;
+
+            function updateParallax() {
+                const scrollY = scrollContainer.scrollTop;
+                
+                parallaxElements.forEach(el => {
+                    const speed = parseFloat(el.getAttribute('data-parallax-speed')) || 0.1;
+                    // Move the background vertically opposite to scroll direction based on speed
+                    const yPos = -(scrollY * speed);
+                    el.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                });
+                
+                ticking = false;
+            }
+
+            scrollContainer.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateParallax();
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+            
+            // Initial position update
+            updateParallax();
+        });
+    </script>
 </body>
 </html>
