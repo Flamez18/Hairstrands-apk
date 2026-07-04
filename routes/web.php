@@ -55,6 +55,15 @@ Route::middleware('auth')->group(function () {
         // Profile & History
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+        // Subscription & Points
+        Route::get('/subscription', function () {
+            return view('subscription.index');
+        })->name('subscription');
+
+        Route::get('/poin', function () {
+            return view('points.index');
+        })->name('points');
     });
 
     // Admin Routes (Protected with role:admin)
