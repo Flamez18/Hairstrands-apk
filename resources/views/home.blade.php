@@ -62,7 +62,7 @@
         </div>
         <span class="menu-item-name">History</span>
     </a>
-    <a onclick="alert('Subscription is coming soon in future releases!')" class="menu-item">
+    <a href="{{ route('subscription') }}" class="menu-item">
         <div class="menu-item-icon-wrapper" style="background-color: #fef2f2; color: #ef4444;">
             <i class="fa-regular fa-gem"></i>
         </div>
@@ -80,11 +80,11 @@
         </div>
         <span class="menu-item-name">Scan</span>
     </a>
-    <a href="{{ route('experts') }}" class="menu-item">
-        <div class="menu-item-icon-wrapper" style="background-color: #f0fdf4; color: #16a34a;">
-            <i class="fa-solid fa-user-doctor"></i>
+    <a href="{{ route('points') }}" class="menu-item">
+        <div class="menu-item-icon-wrapper" style="background-color: #fdf4ff; color: #9333ea;">
+            <i class="fa-solid fa-coins"></i>
         </div>
-        <span class="menu-item-name">Dokter</span>
+        <span class="menu-item-name">Poin</span>
     </a>
 </div>
 
