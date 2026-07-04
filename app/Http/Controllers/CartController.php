@@ -55,6 +55,15 @@ class CartController extends Controller
             ]);
         }
 
+        if ($request->wantsJson() || $request->ajax()) {
+            $cartCount = $cart->items()->sum('quantity');
+            return response()->json([
+                'success' => true,
+                'message' => 'Produk berhasil ditambahkan ke keranjang!',
+                'cartCount' => $cartCount
+            ]);
+        }
+
         return redirect()->route('cart')->with('success', 'Produk berhasil ditambahkan ke keranjang!');
     }
 
