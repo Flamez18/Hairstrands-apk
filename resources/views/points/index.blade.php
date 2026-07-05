@@ -338,6 +338,97 @@
     text-align: right;
     line-height: 1.2;
 }
+
+/* ── AI Earn Featured Card ── */
+.ai-earn-card {
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    background: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ai-earn-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0, 75, 56, 0.15);
+}
+.ai-earn-card-img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+}
+.ai-earn-card-body {
+    background: linear-gradient(135deg, #f0fdf6, #e6f5ee);
+    padding: 16px;
+}
+.ai-earn-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--primary);
+    color: white;
+    font-size: 0.62rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.ai-earn-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #004B38;
+    margin-bottom: 6px;
+}
+.ai-earn-desc {
+    font-size: 0.72rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+.ai-earn-pts-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    border: 1px solid #c6eed9;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--primary);
+    padding: 5px 12px;
+    border-radius: 50px;
+}
+
+/* ── Earn Rule Cards ── */
+.earn-rule-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.earn-rule-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0,75,56,0.08);
+}
+.earn-rule-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+.earn-rule-title { font-size: 0.8rem; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+.earn-rule-desc { font-size: 0.68rem; color: var(--text-muted); line-height: 1.4; }
 </style>
 @endsection
 
@@ -568,55 +659,72 @@
     </div>
 </div>
 
-{{-- ── Cara Dapat Poin ── --}}
+{{-- ── Cara Dapat Poin (versi lama) ── --}}
 <div id="sec-earn" style="margin-top:24px; margin-bottom:16px;">
     <div class="menu-section-title">Cara Dapat Poin</div>
-    
-    <div class="earn-card">
-        <div class="earn-icon" style="background:#f0fdf4; color:var(--primary);">🛒</div>
-        <div style="flex:1;">
-            <div class="earn-title">Beli Produk</div>
-            <div class="earn-desc">Dapatkan poin dari setiap pembelian produk</div>
-        </div>
-        <div class="earn-pts">
-            1 PTS
-            <div style="font-size:0.65rem; color:var(--text-muted); font-weight:700; margin-top:2px;">per Rp 1.000</div>
-        </div>
-    </div>
-    
-    <div class="earn-card">
-        <div class="earn-icon" style="background:#f0fdf4; color:#16a34a;">👨‍⚕️</div>
-        <div style="flex:1;">
-            <div class="earn-title">Konsultasi Dokter</div>
-            <div class="earn-desc">Bonus poin setiap sesi konsultasi selesai</div>
-        </div>
-        <div class="earn-pts">
-            +50 PTS
-            <div style="font-size:0.65rem; color:var(--text-muted); font-weight:700; margin-top:2px;">per sesi</div>
-        </div>
-    </div>
-    
-    <div class="earn-card">
-        <div class="earn-icon" style="background:#faf5ff; color:#7c3aed;">✨</div>
-        <div style="flex:1;">
-            <div class="earn-title">AI Hair Scan</div>
-            <div class="earn-desc">Poin bonus setiap melakukan scan rambut</div>
-        </div>
-        <div class="earn-pts">
-            +30 PTS
-            <div style="font-size:0.65rem; color:var(--text-muted); font-weight:700; margin-top:2px;">per scan</div>
+
+    {{-- Featured AI Card --}}
+    <div class="ai-earn-card">
+        <img class="ai-earn-card-img"
+             src="https://images.unsplash.com/photo-1676299082056-75c53f5e1fa2?w=700&q=85&fit=crop"
+             alt="AI Hair Chat">
+        <div class="ai-earn-card-body">
+            <div class="ai-earn-badge">
+                <i class="fa-solid fa-robot" style="font-size:0.65rem;"></i>
+                Satu-satunya cara
+            </div>
+            <div class="ai-earn-title">Bertanya kepada AI PureStrands</div>
+            <div class="ai-earn-desc">
+                Ajukan pertanyaan seputar perawatan rambut ke AI kami. Setiap pertanyaan yang kamu kirimkan akan memberikan poin yang bisa ditukarkan dengan voucher dan reward eksklusif.
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                <div class="ai-earn-pts-chip">
+                    ✨ +5 PTS per pertanyaan
+                </div>
+                <div style="font-size:0.65rem; color:#555;">= Rp 500 per tanya</div>
+            </div>
         </div>
     </div>
-    
-    <div class="earn-card">
-        <div class="earn-icon" style="background:#eff6ff; color:#2563eb;">🎂</div>
-        <div style="flex:1;">
-            <div class="earn-title">Bonus Ulang Tahun</div>
-            <div class="earn-desc">Hadiah spesial di hari ulang tahun Anda</div>
+
+    {{-- Rules / Ketentuan --}}
+    <div style="font-size:0.75rem; font-weight:700; color:var(--primary); margin-bottom:10px; margin-top:4px;">
+        📋 Ketentuan
+    </div>
+
+    <div class="earn-rule-card">
+        <div class="earn-rule-num">1</div>
+        <div>
+            <div class="earn-rule-title">Login & buka fitur AI Chat</div>
+            <div class="earn-rule-desc">Pastikan kamu sudah login dan buka menu AI dari halaman utama PureStrands.</div>
         </div>
-        <div class="earn-pts">
-            +200 PTS
-            <div style="font-size:0.65rem; color:var(--text-muted); font-weight:700; margin-top:2px;">per tahun</div>
+    </div>
+    <div class="earn-rule-card">
+        <div class="earn-rule-num">2</div>
+        <div>
+            <div class="earn-rule-title">Kirim pertanyaan seputar rambut</div>
+            <div class="earn-rule-desc">Setiap satu pesan yang kamu kirimkan ke AI akan otomatis dicatat sebagai satu poin aktivitas.</div>
+        </div>
+    </div>
+    <div class="earn-rule-card">
+        <div class="earn-rule-num">3</div>
+        <div>
+            <div class="earn-rule-title">Poin dikreditkan otomatis</div>
+            <div class="earn-rule-desc">+5 PTS (= Rp 500) dikreditkan ke akun kamu sesaat setelah AI membalas pertanyaanmu.</div>
+        </div>
+    </div>
+    <div class="earn-rule-card">
+        <div class="earn-rule-num">4</div>
+        <div>
+            <div class="earn-rule-title">Maks. 20 pertanyaan per hari</div>
+            <div class="earn-rule-desc">Kamu bisa mengumpulkan hingga +100 PTS (= Rp 10.000) per hari dari fitur AI Chat.</div>
+        </div>
+    </div>
+
+    {{-- Info box --}}
+    <div style="background:#f0fdf4; border:1px solid #c6eed9; border-radius:12px; padding:14px 16px; margin-top:4px; display:flex; align-items:flex-start; gap:10px;">
+        <span style="font-size:1.2rem; flex-shrink:0; margin-top:1px;">💡</span>
+        <div style="font-size:0.7rem; color:#004B38; line-height:1.55;">
+            <strong>Ingat:</strong> Saat ini satu-satunya cara mendapatkan PurePoints adalah melalui fitur <strong>Tanya AI</strong>. Cara lain (pembelian, konsultasi, dll.) sedang dalam pengembangan dan akan hadir segera.
         </div>
     </div>
 </div>
