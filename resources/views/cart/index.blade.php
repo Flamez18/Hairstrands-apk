@@ -21,8 +21,27 @@
     <div class="cart-list">
         @foreach($items as $item)
             <div class="cart-item">
-                <div class="cart-item-image" style="display: flex; align-items: center; justify-content: center; background-color: var(--primary-light); color: var(--primary);">
-                    <i class="fa-solid fa-bottle-droplet" style="font-size: 1.5rem;"></i>
+                <div class="cart-item-image" style="overflow: hidden; padding: 0; background-color: var(--primary-light);">
+                    @php
+                        $img = $item->product->image ?? null;
+                        $imgSrc = null;
+                        if ($img) {
+                            if (str_starts_with($img, 'http')) {
+                                $imgSrc = $img;
+                            } elseif (file_exists(public_path('uploads/' . $img))) {
+                                $imgSrc = asset('uploads/' . $img);
+                            }
+                        }
+                    @endphp
+                    @if($imgSrc)
+                        <img src="{{ $imgSrc }}"
+                             alt="{{ $item->product->name }}"
+                             style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 8px;">
+                    @else
+                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--primary);">
+                            <i class="fa-solid fa-bottle-droplet" style="font-size: 1.5rem;"></i>
+                        </div>
+                    @endif
                 </div>
                 
                 <div class="cart-item-info">

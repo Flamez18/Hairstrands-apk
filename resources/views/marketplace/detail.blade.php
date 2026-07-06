@@ -22,16 +22,16 @@
 <div class="detail-image-container" style="margin: -20px -20px 20px -20px;">
     @if($product->image)
         @if(str_starts_with($product->image, 'http'))
-            <img src="{{ $product->image }}" class="detail-image" style="height: 250px; border-radius: 0; width: 100%; object-fit: cover;" alt="{{ $product->name }}">
+            <img id="detail-product-img" src="{{ $product->image }}" class="detail-image" style="width: 100%; height: auto; display: block; border-radius: 0;" alt="{{ $product->name }}">
         @elseif(file_exists(public_path('uploads/' . $product->image)))
-            <img src="{{ asset('uploads/' . $product->image) }}" class="detail-image" style="height: 250px; border-radius: 0; width: 100%; object-fit: cover;" alt="{{ $product->name }}">
+            <img id="detail-product-img" src="{{ asset('uploads/' . $product->image) }}" class="detail-image" style="width: 100%; height: auto; display: block; border-radius: 0;" alt="{{ $product->name }}">
         @else
-            <div class="product-placeholder-image" style="height: 250px; border-radius: 0;">
+            <div id="detail-product-img" class="product-placeholder-image" style="height: 250px; border-radius: 0;">
                 <i class="fa-solid fa-bottle-droplet" style="font-size: 5rem; opacity: 0.9;"></i>
             </div>
         @endif
     @else
-        <div class="product-placeholder-image" style="height: 250px; border-radius: 0;">
+        <div id="detail-product-img" class="product-placeholder-image" style="height: 250px; border-radius: 0;">
             <i class="fa-solid fa-bottle-droplet" style="font-size: 5rem; opacity: 0.9;"></i>
         </div>
     @endif
@@ -90,7 +90,7 @@
 
     <!-- Add To Cart Form -->
     @if($product->stock > 0)
-        <form action="{{ route('cart.add', $product->id) }}" method="POST" style="margin-top: 30px;">
+        <form id="detail-cart-form" action="{{ route('cart.add', $product->id) }}" method="POST" style="margin-top: 30px;">
             @csrf
             <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 20px;">
                 <span class="form-label" style="margin: 0; font-weight: 700;">Jumlah:</span>
@@ -100,8 +100,8 @@
                     <button type="button" class="qty-btn" onclick="adjustQty(1)"><i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
-            
-            <button type="submit" class="btn btn-primary">
+
+            <button type="submit" id="btn-tambah-keranjang" class="btn btn-primary">
                 <i class="fa-solid fa-cart-plus"></i> Tambah Ke Keranjang (Rp <span id="btn-price-display">{{ number_format($product->price, 0, ',', '.') }}</span>)
             </button>
         </form>
@@ -112,6 +112,31 @@
 @endsection
 
 @section('scripts')
+<style>
+/* Animasi terbang ke keranjang */
+.fly-clone {
+    position: fixed;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 99999;
+    pointer-events: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    transition:
+        top    0.65s cubic-bezier(0.25, 1, 0.5, 1),
+        left   0.65s cubic-bezier(0.25, 1, 0.5, 1),
+        width  0.65s cubic-bezier(0.25, 1, 0.5, 1),
+        height 0.65s cubic-bezier(0.25, 1, 0.5, 1),
+        opacity 0.5s ease 0.2s;
+}
+
+/* Feedback button saat diklik */
+#btn-tambah-keranjang.adding {
+    opacity: 0.75;
+    transform: scale(0.97);
+    transition: all 0.15s ease;
+    pointer-events: none;
+}
+</style>
 <script>
     function selectShade(element) {
         const circles = document.querySelectorAll('.shade-circle');
@@ -133,5 +158,84 @@
             priceDisplay.textContent = new Intl.NumberFormat('id-ID').format(totalPrice);
         }
     }
+
+    /* ── Fly-to-Cart Animation ── */
+    document.getElementById('detail-cart-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = this;
+        const btn  = document.getElementById('btn-tambah-keranjang');
+
+        // Cari gambar produk & ikon keranjang
+        const productImg = document.getElementById('detail-product-img');
+        const cartIcon   = document.querySelector('.cart-icon-btn');
+
+        if (!productImg || !cartIcon) {
+            form.submit();
+            return;
+        }
+
+        // Posisi asal (gambar produk)
+        const imgRect  = productImg.getBoundingClientRect();
+        // Posisi tujuan (ikon keranjang)
+        const cartRect = cartIcon.getBoundingClientRect();
+
+        // Ukuran klon awal: persegi 70px dari tengah gambar produk
+        const startSize = 70;
+        const startTop  = imgRect.top  + imgRect.height / 2 - startSize / 2;
+        const startLeft = imgRect.left + imgRect.width  / 2 - startSize / 2;
+
+        // Ukuran klon akhir: mengecil ke ukuran ikon
+        const endSize = 24;
+        const endTop  = cartRect.top  + cartRect.height / 2 - endSize / 2;
+        const endLeft = cartRect.left + cartRect.width  / 2 - endSize / 2;
+
+        // Buat klon
+        let clone;
+        if (productImg.tagName === 'IMG') {
+            clone = document.createElement('img');
+            clone.src = productImg.src;
+        } else {
+            // Fallback: lingkaran warna brand
+            clone = document.createElement('div');
+            clone.style.background = 'var(--primary, #0a3d2b)';
+            clone.style.display    = 'flex';
+            clone.style.alignItems = 'center';
+            clone.style.justifyContent = 'center';
+            clone.innerHTML = '<i class="fa-solid fa-bottle-droplet" style="color:white;font-size:1.2rem;"></i>';
+        }
+
+        clone.classList.add('fly-clone');
+        clone.style.width   = startSize + 'px';
+        clone.style.height  = startSize + 'px';
+        clone.style.top     = startTop  + 'px';
+        clone.style.left    = startLeft + 'px';
+        clone.style.opacity = '1';
+        document.body.appendChild(clone);
+
+        // Feedback tombol
+        btn.classList.add('adding');
+
+        // Terbangkan ke keranjang (next frame agar browser render posisi awal dulu)
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                clone.style.width   = endSize + 'px';
+                clone.style.height  = endSize + 'px';
+                clone.style.top     = endTop  + 'px';
+                clone.style.left    = endLeft + 'px';
+                clone.style.opacity = '0';
+            });
+        });
+
+        // Setelah animasi selesai: submit form & animasi badge keranjang
+        setTimeout(() => {
+            clone.remove();
+            // Bounce animasi ikon keranjang
+            cartIcon.style.transition = 'transform 0.2s cubic-bezier(0.34,1.56,0.64,1)';
+            cartIcon.style.transform  = 'scale(1.35)';
+            setTimeout(() => { cartIcon.style.transform = 'scale(1)'; }, 200);
+            // Submit form
+            form.submit();
+        }, 680);
+    });
 </script>
 @endsection
