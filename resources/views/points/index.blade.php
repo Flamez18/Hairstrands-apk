@@ -666,8 +666,8 @@
     {{-- Featured AI Card --}}
     <div class="ai-earn-card">
         <img class="ai-earn-card-img"
-             src="https://images.unsplash.com/photo-1676299082056-75c53f5e1fa2?w=700&q=85&fit=crop"
-             alt="AI Hair Chat">
+             src="{{ asset('images/purestrand_logo.jpg') }}"
+             alt="AI Hair Chat" style="object-fit: cover;">
         <div class="ai-earn-card-body">
             <div class="ai-earn-badge">
                 <i class="fa-solid fa-robot" style="font-size:0.65rem;"></i>
