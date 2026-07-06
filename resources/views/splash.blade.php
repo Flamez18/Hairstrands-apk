@@ -127,21 +127,47 @@
 }
 @keyframes streak { from { transform: translateX(0); } to { transform: translateX(-60px); } }
 
-/* ── LOCATION CHIP ── */
+/* ── LOCATION CHIP (Speech Bubble di kepala karakter) ── */
 .loc-chip {
-    position: absolute; top: 62%; left: 50%;
-    transform: translateX(-50%) translateY(8px);
-    background: rgba(6,30,18,0.75); backdrop-filter: blur(10px);
-    color: #4ADE80; border: 1.5px solid rgba(74,222,128,0.35);
-    border-radius: 50px; padding: 6px 20px;
-    font-size: 0.74rem; font-weight: 800; font-family: 'Outfit', sans-serif;
-    letter-spacing: 0.5px; white-space: nowrap; pointer-events: none; opacity: 0;
+    position: absolute;
+    left: 88px;
+    top: 8px;
+    background: rgba(255,255,255,0.96);
+    color: #0F3D2E;
+    border-radius: 14px;
+    padding: 7px 13px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+    z-index: 35;
 }
-.loc-chip.salon  { animation: chip-in 0.5s ease 0.8s forwards, chip-out 0.4s ease 1.8s forwards; }
-.loc-chip.barber { animation: chip-in 0.5s ease 2.1s forwards, chip-out 0.4s ease 3.1s forwards; }
-.loc-chip.klinik { animation: chip-in 0.5s ease 3.4s forwards, chip-out 0.4s ease 4.4s forwards; }
-@keyframes chip-in  { from { opacity:0; transform:translateX(-50%) translateY(12px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
-@keyframes chip-out { from { opacity:1; } to { opacity:0; } }
+/* Ekor bubble mengarah ke kiri bawah menuju mulut karakter */
+.loc-chip::after {
+    content: '';
+    position: absolute;
+    left: -7px;
+    bottom: 8px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 9px 3px 0;
+    border-color: transparent rgba(255,255,255,0.96) transparent transparent;
+    transform: rotate(15deg);
+}
+.loc-chip.salon  { animation: talk-bubble 1.4s ease 0.8s forwards; }
+.loc-chip.barber { animation: talk-bubble 1.4s ease 2.1s forwards; }
+.loc-chip.klinik { animation: talk-bubble 1.2s ease 3.4s forwards; }
+
+@keyframes talk-bubble {
+    0% { opacity: 0; transform: scale(0.8) translateY(6px); }
+    15%, 85% { opacity: 1; transform: scale(1) translateY(0); }
+    100% { opacity: 0; transform: translateY(-6px); }
+}
 
 /* ── PROGRESS INDICATOR ── */
 .loc-progress {
@@ -477,12 +503,11 @@
       <path d="M60,38 Q65,35 70,38" stroke="#2d1505" stroke-width="1.8" fill="none" stroke-linecap="round"/>
       <path d="M47,57 Q55,65 63,57" stroke="#b07050" stroke-width="2" fill="none" stroke-linecap="round"/>
     </svg>
+    <!-- Speech bubble chips — menempel di kanan kepala karakter -->
+    <div class="loc-chip salon">Pure Salon</div>
+    <div class="loc-chip barber">Hairstrands</div>
+    <div class="loc-chip klinik">Hair Klinik</div>
   </div>
-
-  <!-- Location chips -->
-  <div class="loc-chip salon">✂ &nbsp;Pure Salon</div>
-  <div class="loc-chip barber">💈 &nbsp;The Barber</div>
-  <div class="loc-chip klinik">⚕ &nbsp;Hair Clinic</div>
 
   <!-- Speed lines -->
   <div class="speed-lines">
@@ -521,12 +546,12 @@
     <div class="lp-line"><div class="lp-line-fill" id="fill-1"></div></div>
     <div class="lp-step">
       <div class="lp-dot" id="dot-2"></div>
-      <div class="lp-label">Barber</div>
+      <div class="lp-label">Hairstrands</div>
     </div>
     <div class="lp-line"><div class="lp-line-fill" id="fill-2"></div></div>
     <div class="lp-step">
       <div class="lp-dot" id="dot-3"></div>
-      <div class="lp-label">Klinik</div>
+      <div class="lp-label">Hair Klinik</div>
     </div>
   </div>
 
