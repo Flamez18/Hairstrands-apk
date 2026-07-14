@@ -1,58 +1,37 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
-```
-
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# PureStrands 🌿
+PureStrands adalah aplikasi web berbasis Laravel yang dirancang untuk memberikan solusi kesehatan dan perawatan rambut menyeluruh secara digital. Aplikasi ini menggabungkan e-commerce produk perawatan rambut, analisis kesehatan rambut interaktif berbasis AI, pemesanan sesi konsultasi dengan dokter spesialis, serta sistem keanggotaan (Subscription) dan loyalitas (PurePoints).
+---
+## 🛠️ Tech Stack & Arsitektur
+- **Backend**: Laravel 11.x (PHP 8.2+)
+- **Database**: MySQL / MariaDB
+- **Frontend**: HTML5, Vanilla CSS, dan JavaScript modern (Vite)
+- **UI/UX**: Responsive Mobile-First Design (dioptimalkan untuk tampilan desktop & mobile)
+- **Icons**: FontAwesome 6 (Solid & Regular)
+- **Fonts**: Outfit & Inter (Google Fonts)
+---
+## ✨ Fitur Utama saat ini
+### 1. 🛍️ Product Marketplace
+- Pencarian dan filter produk berdasarkan kategori (Shampoo, Serum, Scalp Care, dll).
+- Pemilihan warna/shades produk menggunakan palet warna interaktif.
+- Alur keranjang belanja (Cart) dan simulasi checkout.
+### 2. 🤖 AI Hair Scan
+- Kuisioner interaktif untuk mendiagnosis masalah rambut pengguna (kerontokan, ketombe, strand thickness).
+- Rekomendasi produk PureStrands yang disesuaikan secara dinamis berdasarkan hasil diagnosis.
+### 3. 👨‍⚕️ Konsultasi Dokter (PureConsult)
+- Daftar dokter ahli (Dermatolog & Hair Stylist) lengkap dengan profil dan rating.
+- Manajemen jadwal konsultasi dan alur booking slot tanggal/jam.
+### 4. 🎟️ PurePoints & Voucher
+- Sistem loyalitas dengan 3 tab navigasi: **Voucher** (tersedia), **Redeem** (aktif & siap pakai dengan kode QR/salin kode), dan **Expired** (riwayat penggunaan).
+- Modul informasi cara mendapatkan poin yang terintegrasi dengan fitur Tanya AI.
+### 5. 💎 Subscription Plans
+- Pilihan paket Standard (Rp25K/bulan) dan Premium (Rp45K/bulan).
+- Paket hemat 6 bulan & tahunan dengan diskon khusus.
+### 6. 🔒 Admin Panel Control
+- Dashboard admin khusus untuk mengelola data master: Kategori Produk, Produk, Dokter Ahli, Jadwal Dokter, dan mengonfirmasi status booking konsultasi pengguna.
+---
+## 🚀 Rencana Pengembangan Masa Depan (Roadmap)
+1. **Payment Gateway Integration**: Menghubungkan Midtrans/Xendit untuk pembayaran subscription dan produk secara otomatis.
+2. **Real-Time Teleconsultation**: Implementasi video call & chat interaktif langsung via WebRTC & WebSockets.
+3. **Computer Vision AI Scan**: Deteksi masalah rambut berbasis analisis foto menggunakan Machine Learning.
+4. **Automated PurePoints Engine**: Otomatisasi perolehan poin dari aktivitas belanja, review produk, dan check-in harian.
+5. **E-Prescription & Notification System**: Integrasi resep dokter langsung ke checkout serta sistem pengingat jadwal via push notification.
