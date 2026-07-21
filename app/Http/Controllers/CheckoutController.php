@@ -104,6 +104,25 @@ class CheckoutController extends Controller
             $user->save();
         }
 
-        return redirect()->route('payment.dummy', $order->id);
+        // Simulate payment success immediately (bypassing dummy payment page)
+        $order->status = 'paid';
+        $order->save();
+
+        \App\Models\Payment::create([
+            'order_id' => $order->id,
+            'payment_method' => $order->payment_method,
+            'payment_status' => 'success',
+            'payment_amount' => $order->total_price,
+            'transaction_id' => 'TX-' . date('YmdHis') . '-' . strtoupper(Str::random(4)),
+        ]);
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'status' => 'success',
+                'redirect' => route('payment.success', $order->id)
+            ]);
+        }
+
+        return redirect()->route('payment.success', $order->id);
     }
 }
